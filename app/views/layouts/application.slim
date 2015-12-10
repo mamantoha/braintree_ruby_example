@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Rails4TrDevise
+    = csrf_meta_tag
+  body
+   - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+
+   p= link_to 'Home', root_path
+
+   - if user_signed_in?
+     div#user_login_box
+       = current_user.email
+       = link_to 'My info', edit_user_registration_path
+       = button_to 'Sign out', destroy_user_session_path, :method => 'delete'
+
+   == yield

@@ -1,0 +1,32 @@
+h1 Products
+
+table.products
+  - @products.each do |p|
+    tr
+      td= p.name
+      td= p.price
+      td= link_to "Buy #{p.name}", new_transaction_path(:product_id => p.id)
+
+- if @transactions
+  h1 Transactions
+  table.transactions
+    - @transactions.each do |t|
+      tr
+        td= t.id
+        td= t.amount
+        td= t.status.capicalize
+
+dl
+  - if current_user.has_payment_info?
+    dt Name
+    dd= current_user.first_name
+    dt Email
+    dd= current_user.email
+    dt Credit Card
+    dd= current_user.credit_cards.first.masked_number
+    dt= link_to "Edit Your Payment Info", edit_customer_path(current_user.id)
+  - else
+    = link_to "Setup Your Payment Info", new_customer_path
+
+  dt Last Logged In
+  dd= current_user.last_sign_in_at
