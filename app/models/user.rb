@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-  FIELDS = [:first_name, :last_name, :phone, :website, :company, :fax, :addresses, :credit_cards, :custom_fields]
-
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  FIELDS = [:first_name, :last_name, :phone, :website, :company, :fax, :addresses, :credit_cards, :custom_fields]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessor *FIELDS
@@ -29,4 +29,5 @@ class User < ActiveRecord::Base
 
     credit_cards.find { |cc| cc.default? }
   end
+
 end
