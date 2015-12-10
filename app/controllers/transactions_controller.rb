@@ -19,6 +19,7 @@ class TransactionsController < ApplicationController
     else
       @product = Product.find(params[:product_id])
       current_user.with_braintree_data!
+
       @credit_card = current_user.default_credit_card
       render :new
     end

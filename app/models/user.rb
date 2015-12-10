@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessor *FIELDS
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :braintree_customer_id
+  # attr_accessible :email, :password, :password_confirmation, :remember_me, :braintree_customer_id
 
   def has_payment_info?
     !!braintree_customer_id

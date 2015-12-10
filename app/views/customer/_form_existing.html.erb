@@ -5,11 +5,12 @@
 <% end %>
 
 <%= form_for :customer,
-      :url => Braintree::TransparentRedirect.url,
-      :params => @result && @result.params[:customer],
-      :existing => current_user,
-      :builder => ApplicationHelper::BraintreeFormBuilder,
-      :errors => @result && @result.errors.for(:customer) do |f| %>
+  :url => Braintree::TransparentRedirect.url,
+  :params => @result && @result.params[:customer],
+  :existing => current_user,
+  :builder => ApplicationHelper::BraintreeFormBuilder,
+  :errors => @result && @result.errors.for(:customer) do |f| %>
+
   <%= field_set_tag "Customer" do %>
     <dl>
       <dt><%= f.label :first_name, 'First Name' %></dt>
@@ -20,11 +21,13 @@
       <dd><%= f.text_field :phone %></dd>
     </dl>
   <% end %>
+
   <% if @credit_card %>
-  <ul>
+    <ul>
       <li><%= @credit_card.masked_number %> (<%= link_to @credit_card.token, edit_credit_card_info_path(:id => @credit_card.token) %>)</li>
-  </ul>
+    </ul>
   <% end %>
+
   <%= hidden_field_tag :tr_data, @tr_data %>
   <%= f.submit 'Save Payment Info' %>
 <% end %>

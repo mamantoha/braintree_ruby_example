@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.8'
+gem 'rails', '~> 4.2.5'
 
-gem 'sqlite3', "~> 1.3.4"
+gem 'sqlite3'
 
 gem 'devise'
 gem 'braintree'
@@ -13,4 +13,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'byebug'
 end
