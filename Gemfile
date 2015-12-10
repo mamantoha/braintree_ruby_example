@@ -15,4 +15,5 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'byebug'
+  gem 'annotate'
 end
