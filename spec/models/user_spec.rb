@@ -8,13 +8,13 @@ describe User do
     user.first_name.should eql('Big')
     user.last_name.should eql('Spender')
     user.credit_cards.size.should_not be_nil
-    user.custom_fields.size.should eql(3)
   end
 
   it "should have payment info" do
     user = create_user :braintree_customer_id => '663636'
 
-    user.has_payment_info?.should be_true
+
+    user.has_payment_info?.should eq(true)
   end
 
   it "should find customer's default card" do

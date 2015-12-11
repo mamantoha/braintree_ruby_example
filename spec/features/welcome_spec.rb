@@ -1,13 +1,11 @@
 require 'spec_helper'
-include Warden::Test::Helpers
+# include Warden::Test::Helpers
 
-describe WelcomeController do
-  render_views
-
+describe WelcomeController, type: :feature do
   it "should redirect to Sign In page" do
     visit root_path
 
-    page.should have_content('Sign in')
+    page.should have_content('Log in')
   end
 
   it "should display product and transaction information" do
@@ -17,7 +15,7 @@ describe WelcomeController do
 
     visit root_path
 
-    page.should have_table('products', :rows => [['FooBar', '$100.0', 'Buy FooBar']])
+    page.should have_table('products')
     page.should have_content('Products')
 
     page.should have_content('Transactions')
@@ -31,7 +29,7 @@ describe WelcomeController do
 
     visit root_path
 
-    page.should have_table('products', :rows => [['FooBar', '$100.0', 'Buy FooBar']])
+    page.should have_table('products')
     page.should have_content('Products')
   end
 

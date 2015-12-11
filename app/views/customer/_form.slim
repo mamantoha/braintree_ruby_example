@@ -3,10 +3,12 @@
     | #{h(@result.errors.size)} error(s)
 
 = form_for(:customer,
-      :url => Braintree::TransparentRedirect.url,
-      :params => @result && @result.params[:customer],
-      :builder => ApplicationHelper::BraintreeFormBuilder,
-      :errors => @result && @result.errors.for(:customer)) do |f|
+      url:     Braintree::TransparentRedirect.url,
+      params:  @result && @result.params[:customer],
+      builder: ApplicationHelper::BraintreeFormBuilder,
+      errors:  @result && @result.errors.for(:customer)) do |f|
+
+
   = field_set_tag "Customer" do
     dl
       dt= f.label :first_name, 'First Name'
@@ -15,6 +17,7 @@
       dd= f.text_field :last_name
       dt= f.label :phone, 'Phone'
       dd= f.text_field :phone
+
   = field_set_tag "Credit Card" do
     - f.fields_for :credit_card do |cc|
       dl
@@ -24,5 +27,6 @@
         dd= cc.text_field :expiration_date
         dt= cc.label :cvv, 'CVV'
         dd= cc.text_field :cvv
+
   = hidden_field_tag :tr_data, @tr_data
   = f.submit 'Save Payment Info'

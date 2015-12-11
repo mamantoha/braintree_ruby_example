@@ -1,7 +1,6 @@
 require 'spec_helper'
 
-describe CreditCardInfoController do
-  render_views
+describe CreditCardInfoController, type: :feature do
 
   it "should display form to edit credit card" do
     sign_in_as_user :braintree_customer_id => '663636'
@@ -30,10 +29,9 @@ describe CreditCardInfoController do
   end
 
   it "should display sign in form for unauthorized user" do
-
     visit edit_credit_card_info_path(:id => 'FDJCB')
 
-    page.should have_content('Sign in')
+    page.should have_content('Log in')
     page.should have_field('user_email')
     page.should have_field('user_password')
   end

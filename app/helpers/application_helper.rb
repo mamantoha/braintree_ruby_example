@@ -33,9 +33,7 @@ module ApplicationHelper
       if @braintree_params
         @braintree_params[method]
       elsif @braintree_existing
-
         if @braintree_existing.kind_of?(Braintree::CreditCard)
-
           case method
           when :number
             method = :masked_number

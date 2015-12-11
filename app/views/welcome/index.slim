@@ -1,6 +1,6 @@
 h1 Products
 
-table.products
+table#products
   - @products.each do |p|
     tr
       td= p.name
@@ -9,7 +9,7 @@ table.products
 
 - if @transactions
   h1 Transactions
-  table.transactions
+  table#transactions
     - @transactions.each do |t|
       tr
         td= t.id

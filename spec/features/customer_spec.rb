@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-describe CustomerController do
-  render_views
-
+describe CustomerController, type: :feature do
   it 'should display payment information form' do
     sign_in_as_user
 
@@ -11,11 +9,10 @@ describe CustomerController do
     page.should have_content('Add Payment Info')
   end
 
-  it 'should display sign in page for unauthorized user (new)' do
-
+  it 'should display log in page for unauthorized user (new)' do
     visit new_customer_path
 
-    page.should have_content('Sign in')
+    page.should have_content('Log in')
     page.should have_field('user_email')
     page.should have_field('user_password')
   end
@@ -69,11 +66,11 @@ describe CustomerController do
   end
 
 
-  it 'should display sign in page for unauthorized user (edit)' do
+  it 'should display log in page for unauthorized user (edit)' do
 
     visit edit_customer_path(:id => '1')
 
-    page.should have_content('Sign in')
+    page.should have_content('Log in')
     page.should have_field('user_email')
     page.should have_field('user_password')
   end

@@ -1,8 +1,6 @@
 require 'spec_helper'
 
-describe TransactionsController do
-  render_views
-
+describe TransactionsController, type: :feature do
   it "should purchase product" do
     Product.create(:name => 'FooBar', :price => 100)
 
